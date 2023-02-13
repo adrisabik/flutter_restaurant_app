@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_restaurant_app/detail_screen.dart';
 import 'package:flutter_restaurant_app/restaurant.dart';
 import 'dart:developer';
 
 class MainScreen extends StatelessWidget {
+  static const routeName = '/restaurant_list';
+
   const MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main Screen'),
+        title: const Text('Restaurant App'),
       ),
       body: FutureBuilder<String>(
         future: DefaultAssetBundle.of(context).loadString('assets/local_restaurant.json'),
@@ -37,6 +40,9 @@ class MainScreen extends StatelessWidget {
       ),
       title: Text(restaurant.name),
       subtitle: Text(restaurant.city),
+      onTap: () {
+        Navigator.pushNamed(context, DetailScreen.routeName, arguments: restaurant);
+      },
     );
   }
 }
