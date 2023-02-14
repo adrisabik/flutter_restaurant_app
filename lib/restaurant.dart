@@ -25,7 +25,7 @@ class Restaurant {
     description: restaurant["description"],
     pictureId: restaurant["pictureId"],
     city: restaurant["city"],
-    rating: restaurant["rating"],
+    rating: restaurant["rating"].toDouble(),
     menus: Menus.fromJson(restaurant["menus"]),
   );
 }

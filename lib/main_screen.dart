@@ -36,12 +36,13 @@ class MainScreen extends StatelessWidget {
                 builder: (context, snapshot) {
                   final List<Restaurant> restaurants = parseRestaurants(snapshot.data);
                   return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: restaurants.length,
-                      itemBuilder: (context, index) {
-                        return _buildRestaurantItem(context, restaurants[index]);
-                      }
-                    );
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: restaurants.length,
+                    itemBuilder: (context, index) {
+                      return _buildRestaurantItem(context, restaurants[index]);
+                    }
+                  );
                 },
               ),
             ],
